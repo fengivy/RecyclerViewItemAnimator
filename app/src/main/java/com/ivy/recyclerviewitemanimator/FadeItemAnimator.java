@@ -1,64 +1,63 @@
 package com.ivy.recyclerviewitemanimator;
 
-import android.animation.Animator;
+import android.support.v4.animation.AnimatorCompatHelper;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
 import android.support.v7.widget.RecyclerView;
 
 /**
- * Created by ivy on 2017/3/21.
+ * Created by ivy on 2017/3/22.
  * Description：
  */
 
-public class SlideItemAnimator extends BaseItemAnimator{
-
+public class FadeItemAnimator extends BaseItemAnimator {
     @Override
-    public void setRemoveAnimation(RecyclerView.ViewHolder holder, ViewPropertyAnimatorCompat animator) {
-        animator.translationX(-holder.itemView.getWidth());
+    public void setRemoveAnimation(RecyclerView.ViewHolder holder,ViewPropertyAnimatorCompat animator) {
+        animator.alpha(0);
     }
 
     @Override
-    public void removeAnimationEnd(RecyclerView.ViewHolder holder) {
-        ViewCompat.setTranslationX(holder.itemView,0);
+    public void removeAnimationEnd(RecyclerView.ViewHolder view) {
+        ViewCompat.setAlpha(view.itemView,1);
     }
 
     @Override
     public void addAnimationInit(RecyclerView.ViewHolder holder) {
-        ViewCompat.setTranslationX(holder.itemView,-holder.itemView.getWidth());
+        ViewCompat.setAlpha(holder.itemView, 0);
     }
 
     @Override
-    public void setAddAnimation(RecyclerView.ViewHolder holder, ViewPropertyAnimatorCompat animator) {
-        animator.translationX(0);
+    public void setAddAnimation(RecyclerView.ViewHolder holder,ViewPropertyAnimatorCompat animator) {
+        animator.alpha(1);
     }
 
     @Override
     public void addAnimationCancel(RecyclerView.ViewHolder holder) {
-        ViewCompat.setTranslationX(holder.itemView,0);
+        ViewCompat.setAlpha(holder.itemView, 1);
     }
 
     @Override
     public void setOldChangeAnimation(RecyclerView.ViewHolder holder, ViewPropertyAnimatorCompat animator) {
-        animator.translationX(-holder.itemView.getWidth());
+        animator.alpha(0);
     }
 
     @Override
     public void oldChangeAnimationEnd(RecyclerView.ViewHolder holder) {
-        ViewCompat.setTranslationX(holder.itemView,0);
+        ViewCompat.setAlpha(holder.itemView,1);
     }
 
     @Override
     public void newChangeAnimationInit(RecyclerView.ViewHolder holder) {
-        ViewCompat.setTranslationX(holder.itemView,holder.itemView.getWidth());
+        ViewCompat.setAlpha(holder.itemView,0);
     }
 
     @Override
     public void setNewChangeAnimation(RecyclerView.ViewHolder holder, ViewPropertyAnimatorCompat animator) {
-        animator.translationX(0);
+        animator.alpha(1);
     }
 
     @Override
     public void newChangeAnimationEnd(RecyclerView.ViewHolder holder) {
-        ViewCompat.setTranslationX(holder.itemView,0);
+        ViewCompat.setAlpha(holder.itemView,1);
     }
 }

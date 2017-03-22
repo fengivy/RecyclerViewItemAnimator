@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="anim_type">
+        <item>fade</item>
+        <item>slide </item>
+        <item>rotate</item>
+        <item>scale</item>
+    </string-array>
+</resources>

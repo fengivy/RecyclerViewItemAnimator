@@ -25,6 +25,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:text="update"/>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:entries="@array/anim_type"></Spinner>
     </LinearLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"
