@@ -2,7 +2,11 @@ package com.ivy.recyclerviewitemanimator;
 
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorCompat;
+import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 /**
  * Created by ivy on 2017/3/21.
@@ -60,11 +64,12 @@ public class RotateItemAnimator extends BaseItemAnimator{
 
     @Override
     public void setNewChangeAnimation(RecyclerView.ViewHolder holder, ViewPropertyAnimatorCompat animator) {
-        animator.rotationY(0);
+        animator.rotationY(0).setStartDelay(getChangeDuration());
     }
 
     @Override
     public void newChangeAnimationEnd(RecyclerView.ViewHolder holder) {
         ViewCompat.setRotationY(holder.itemView,0);
+        ViewCompat.animate(holder.itemView).setStartDelay(0);
     }
 }
