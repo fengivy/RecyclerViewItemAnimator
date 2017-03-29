@@ -191,16 +191,6 @@ public abstract class BaseItemAnimator extends SimpleItemAnimator {
         }).start();
     }
 
-    public abstract void setRemoveAnimation(ViewHolder holder,ViewPropertyAnimatorCompat animator);
-    public abstract void removeAnimationEnd(ViewHolder holder);
-    public abstract void addAnimationInit(ViewHolder holder);
-    public abstract void setAddAnimation(ViewHolder holder,ViewPropertyAnimatorCompat animator);
-    public abstract void addAnimationCancel(ViewHolder holder);
-    public abstract void setOldChangeAnimation(ViewHolder holder,ViewPropertyAnimatorCompat animator);
-    public abstract void oldChangeAnimationEnd(ViewHolder holder);
-    public abstract void newChangeAnimationInit(ViewHolder holder);
-    public abstract void setNewChangeAnimation(ViewHolder holder,ViewPropertyAnimatorCompat animator);
-    public abstract void newChangeAnimationEnd(ViewHolder holder);
     @Override
     public boolean animateAdd(final ViewHolder holder) {
         resetAnimation(holder);
@@ -660,4 +650,58 @@ public abstract class BaseItemAnimator extends SimpleItemAnimator {
         @Override
         public void onAnimationCancel(View view) {}
     }
+    /**
+     * 执行移除动画
+     * @param holder 被移除的ViewHolder
+     * @param animator 被移动的ViewHolder对应动画对象
+     */
+    public abstract void setRemoveAnimation(ViewHolder holder,ViewPropertyAnimatorCompat animator);
+    /**
+     * 执行移除动画结束，执行还原，因为该ViewHolder会被复用
+     * @param holder 被移除的ViewHolder
+     */
+    public abstract void removeAnimationEnd(ViewHolder holder);
+    /**
+     * 执行添加动画初始化 这里设置透明为0添加时就会有渐变效果当然你可以在执行动画代码之前执行
+     * @param holder 添加的ViewHolder
+     */
+    public abstract void addAnimationInit(ViewHolder holder);
+    /**
+     * 执行添加动画
+     * @param holder 添加的ViewHolder
+     * @param animator 添加的ViewHolder对应动画对象
+     */
+    public abstract void setAddAnimation(ViewHolder holder,ViewPropertyAnimatorCompat animator);
+    /**
+     * 取消添加还原状态以复用
+     * @param holder 添加的ViewHolder
+     */
+    public abstract void addAnimationCancel(ViewHolder holder);
+    /**
+     * 更新时旧的ViewHolder动画
+     * @param holder 旧的ViewHolder
+     * @param animator ViewHolder对应动画对象
+     */
+    public abstract void setOldChangeAnimation(ViewHolder holder,ViewPropertyAnimatorCompat animator);
+    /**
+     * 更新时旧的ViewHolder动画结束，执行还原
+     * @param holder
+     */
+    public abstract void oldChangeAnimationEnd(ViewHolder holder);
+    /**
+     * 更新时新的ViewHolder初始化
+     * @param holder 更新时新的ViewHolder
+     */
+    public abstract void newChangeAnimationInit(ViewHolder holder);
+    /**
+     * 更新时新的ViewHolder动画
+     * @param holder 新的ViewHolder
+     * @param animator ViewHolder对应动画对象
+     */
+    public abstract void setNewChangeAnimation(ViewHolder holder,ViewPropertyAnimatorCompat animator);
+    /**
+     * 更新时新的ViewHolder动画结束，执行还原
+     * @param holder
+     */
+    public abstract void newChangeAnimationEnd(ViewHolder holder);
 }
